@@ -55,6 +55,7 @@ async function getArtistID(token, query) {
       }
     });
     console.log(response.data.artists.items[0].id);
+    getTopSongs(token, response.data.artists.items[0].id);
     return response.data.artists.items[0].id;
   } catch (error) {
     console.error(error);
@@ -62,3 +63,18 @@ async function getArtistID(token, query) {
 }
 
 // const url = 'https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02/top-tracks?&market=US';
+
+async function getTopSongs(token, artistID) {
+  try {
+    const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
