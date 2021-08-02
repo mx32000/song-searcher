@@ -108,13 +108,9 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 
 ## Project Schedule
 
-This schedule will be used to keep track of your progress throughout the week and align with our expectations.  
-
-You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
-
 |  Day | Deliverable | Status
 |---|---| ---|
-|July 30| Prompt / Wireframes / Priority Matrix / Timeframes / Make successful API call | Incomplete
+|July 30| Wireframes / Priority Matrix / Timeframes / Make successful API call | Complete
 |August 2| Project Approval / Core Application Structure (HTML, CSS, etc.) / Figure out how to hide client credentials | Incomplete
 |August 3| JS / dynamic content | Incomplete
 |August 4| Responsiveness / MVP | Incomplete
@@ -127,17 +123,13 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Timeframes
 
-Tell us how long you anticipate spending on each area of development. Be sure to consider how many hours a day you plan to be coding and how many days you have available until presentation day.
-
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe. Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
-
 ### MVP
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Make successful call to API with Postman | H | 3hrs| 2hrs | 0hrs |
 | Make successful call to API in VSCode | H | 3hrs| 4hrs | 0hrs |
-| Hide credentials from Github | H | 5hrs| 0hrs | 0hrs |
+| Hide credentials from Github | H | 5hrs| 2.5hrs | 0hrs |
 | Text and search bar/submit | H | 3hrs| 0hrs | 0hrs |
 | Make search call and get artist | H | 2hrs| 0hrs | 0hrs |
 | Make call for top songs and format data | H | 2hrs| 0hrs | 0hrs |
