@@ -1,0 +1,1 @@
+console.log(config.CLIENT_ID[0]);
