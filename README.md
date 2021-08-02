@@ -131,7 +131,7 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 | Make successful call to API in VSCode | H | 3hrs| 4hrs | 0hrs |
 | Hide credentials from Github | H | 5hrs| 3hrs | 0hrs |
 | Text and search bar/submit | H | 3hrs| .5hrs | 0hrs |
-| Make search call and get artist | H | 2hrs| 0hrs | 0hrs |
+| Make search call and get artist | H | 2hrs| .5hrs | 0hrs |
 | Make call for top songs and format data | H | 2hrs| 0hrs | 0hrs |
 | Render data on page using Flexbox / Grid | H | 3hrs| 0hrs | 0hrs |
 | Adjust for medium screens | L | 3hrs| 0hrs | 0hrs |

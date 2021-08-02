@@ -1,8 +1,10 @@
-// const artistForm = document.querySelector("#artist-select");
+const artistForm = document.querySelector("#artist-select");
+const artistInput = document.querySelector(".artist-input");
 
-// artistForm.addEventListener("submit", e => {
-//   e.preventDefault();
-// })
+artistForm.addEventListener("submit", e => {
+  e.preventDefault();
+  console.log(artistInput.value);
+})
 
 async function getToken() {
   try {
@@ -21,6 +23,7 @@ async function getToken() {
     
     $.ajax(settings).done(function (response) {
       console.log(response);
+      return response.access_token;
     });
   }
   catch (error) {
@@ -30,18 +33,22 @@ async function getToken() {
 
 getToken();
 
-const url = 'https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02/top-tracks?&market=US';
+async function getArtistID(token) {
 
-
-async function test(token) {
-  try {
-    const res = await axios.get(url, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
 }
+
+// const url = 'https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02/top-tracks?&market=US';
+
+
+// async function test(token) {
+//   try {
+//     const res = await axios.get(url, {
+//       headers: {
+//         'Authorization': `Bearer ${token}`
+//       }
+//     })
+//     console.log(res);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
