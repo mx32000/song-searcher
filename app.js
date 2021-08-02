@@ -3,8 +3,17 @@ const artistInput = document.querySelector(".artist-input");
 
 artistForm.addEventListener("submit", e => {
   e.preventDefault();
-  console.log(artistInput.value);
+  performOperations(artistInput.value);
 })
+
+async function performOperations(query) {
+  try {
+    const token = await getToken();
+    const artistID = await getArtistID(token, query);
+  } catch {
+    console.error(error);
+  }
+}
 
 async function getToken() {
   try {
@@ -31,10 +40,22 @@ async function getToken() {
   }
 }
 
-getToken();
+getToken()
 
-async function getArtistID(token) {
-
+async function getArtistID(token, query) {
+  try {
+    query.replace(" ", "%20");
+    const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // const url = 'https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02/top-tracks?&market=US';
