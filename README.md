@@ -87,24 +87,24 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 
 ## Wireframes
 
-Upload images of your wireframes to an image hosting site or add them to an assets folder in your repo and link them here with a description of each specific wireframe.
+[Mobile Wireframe](https://whimsical.com/song-searcher-J1NeKcXJmW7KxEacAMTJmk)
 
 ### MVP/PostMVP
 
-The functionality will then be divided into two separate lists: MPV and PostMVP.  Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
-
 #### MVP 
-*These are examples only. Replace with your own MVP features.*
 
-- Find and use external api 
-- Render data on page 
-- Allow user to choose favorites 
+- Make calls and get data from external API
+- Enable user to search for an artist
+- Display artist's top songs using flexbox or grid
 
 #### PostMVP  
-*These are examples only. Replace with your own Post-MVP features.*
 
-- Add second API
-- Use local storage to save user favorites
+- "Not what you were looking for?" button to show top 3 results of search instead of automatically selecting first
+- Separate tab for selecting a random song from the first however many albums
+- "To top" button on mobile layout
+- Error messages for bad searches
+- Selection bar to show how many (up to 10) top songs to show
+- Refresh token if it expires (lasts an hour)
 
 ## Project Schedule
 
@@ -114,16 +114,16 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|July 30| Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete
-|August 2| Project Approval / Core Application Structure (HTML, CSS, etc.) | Incomplete
-|August 3| Pseudocode / actual code | Incomplete
-|August 4| Initial Clickable Model  | Incomplete
-|August 5| MVP | Incomplete
+|July 30| Prompt / Wireframes / Priority Matrix / Timeframes / Make successful API call | Incomplete
+|August 2| Project Approval / Core Application Structure (HTML, CSS, etc.) / Figure out how to hide client credentials | Incomplete
+|August 3| JS / dynamic content | Incomplete
+|August 4| Responsiveness / MVP | Incomplete
+|August 5| Finishing touches / Post MVP | Incomplete
 |August 6| Presentations | Incomplete
 
 ## Priority Matrix
 
-Include a full list of features that have been prioritized based on the `Time and Importance` Matrix.  Link this image in a similar manner to your wireframes
+[Priority Matrix](https://whimsical.com/6bKrpH2dsS3dJFzn7z4S2A)
 
 ## Timeframes
 
@@ -131,11 +131,36 @@ Tell us how long you anticipate spending on each area of development. Be sure to
 
 Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe. Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
 
+### MVP
+
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 3hrs| 3.5hrs | 3.5hrs |
-| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
-| Total | H | 6hrs| 5hrs | 5hrs |
+| Make successful call to API with Postman | H | 3hrs| 2hrs | 0hrs |
+| Make successful call to API in VSCode | H | 3hrs| 4hrs | 0hrs |
+| Hide credentials from Github | H | 5hrs| 0hrs | 0hrs |
+| Text and search bar/submit | H | 3hrs| 0hrs | 0hrs |
+| Make search call and get artist | H | 2hrs| 0hrs | 0hrs |
+| Make call for top songs and format data | H | 2hrs| 0hrs | 0hrs |
+| Render data on page using Flexbox / Grid | H | 3hrs| 0hrs | 0hrs |
+| Adjust for medium screens | L | 3hrs| 0hrs | 0hrs |
+| Adjust for larger screens | M | 3hrs| 0hrs | 0hrs |
+| Deploy site | H | 2hrs| 0hrs | 0hrs |
+| Total | H | 29hrs| 6hrs | 0hrs |
+
+
+### Post MVP
+
+| Component | Priority | Estimated Time | Time Invested | Actual Time |
+| --- | :---: |  :---: | :---: | :---: |
+| Selection menu to choose how many songs to display | M | 1hr| 0hrs | 0hrs |
+| "To Top" button on mobile screen | M | 1hr| 0hrs | 0hrs |
+| Create tabs for multiple functions | L | 3hrs| 0hrs | 0hrs |
+| Implement search for random song from artist | L | 3hrs| 0hrs | 0hrs |
+| Handle token expired error | L | 2hrs| 0hrs | 0hrs |
+| Handle no search results error | H | 2hrs| 0hrs | 0hrs |
+| Option to see more artists that fit search | L | 3hrs| 0hrs | 0hrs |
+| Follow Spotify design guidelines | M | 3hrs| 0hrs | 0hrs |
+| Total | H | 18hrs| 0hrs | 0hrs |
 
 ## Code Snippet
 
