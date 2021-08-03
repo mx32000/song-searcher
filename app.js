@@ -2,6 +2,7 @@ const artistForm = document.querySelector("#artist-select");
 const artistInput = document.querySelector(".artist-input");
 const tracksDiv = document.querySelector(".track-list")
 const toTop = document.querySelector("#to-top");
+const showMore = document.querySelector("#others");
 
 artistForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -88,6 +89,9 @@ async function getTopSongs(token, artistID) {
     })
     if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
       toTop.classList.toggle("show");
+    }
+    if ((tracksDiv.children.length > 0) ^ (showMore.classList.contains("show"))) {
+      showMore.classList.toggle("show");
     }
     return response.data;
   } catch (error) {

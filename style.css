@@ -108,7 +108,7 @@ body main a {
   display: none;
 }
 
-body main .show {
+body main a.show {
   display: inline-block;
 }
 
@@ -138,7 +138,7 @@ body footer {
     font-size: 12px;
   }
 
-  body main .show {
+  body main #to-top {
     display: none;
   }
 }
