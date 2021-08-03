@@ -77,6 +77,7 @@ body main button {
 }
 
 body main .track-list {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
