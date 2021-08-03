@@ -1,6 +1,6 @@
 * {
-  margin: 0;
-
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 body {
@@ -49,7 +49,7 @@ body main .track-list div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 body main .track-list div h2 {

@@ -67,6 +67,7 @@ async function getArtistID(token, query) {
 
 async function getTopSongs(token, artistID) {
   try {
+    deleteSongs(tracksDiv);
     const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
     const response = await axios.get(url, {
       headers: {
@@ -87,12 +88,21 @@ async function getTopSongs(token, artistID) {
       const artists = track.artists.map(artist => artist.name);
       const artistString = artists.join(", ");
       artistsEl.textContent = artists.join(", ");
+      //album
+      const albumEl = document.createElement("p");
+      albumEl.textContent = `Album: ${track.album.name}`;
 
-      trackDiv.append(nameEl, artistsEl, imgEl);
+      trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
       tracksDiv.append(trackDiv);
     })
     return response.data;
   } catch (error) {
     console.error(error);
+  }
+}
+
+function deleteSongs(parent) {
+  while (parent.lastChild) {
+    parent.removeChild(parent.lastChild);
   }
 }
