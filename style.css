@@ -66,4 +66,5 @@ body main .track-list div p {
 
 body main a {
   display: none;
+  margin: 5px;
 }

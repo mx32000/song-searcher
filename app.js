@@ -8,17 +8,6 @@ artistForm.addEventListener("submit", e => {
   const token = getToken();
 })
 
-async function performOperations(query) {
-  try {
-    const token = await getToken();
-    console.log("token",token);
-    const artistID = await getArtistID(token, query);
-
-  } catch {
-    console.error(error);
-  }
-}
-
 async function getToken() {
   try {
     const settings = {
@@ -45,9 +34,9 @@ async function getToken() {
   }
 }
 
-async function getArtistID(token, query) {
+async function getArtistID(token) {
   try {
-    const query = artistInput.value.replace(" ", "%20");
+    const query = encodeURIComponent(artistInput.value);
     console.log("artist", query);
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
     // const url = "https://api.spotify.com/v1/search?q=Katy%20Perry&type=artist";
