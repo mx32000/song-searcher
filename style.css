@@ -105,3 +105,15 @@ body footer {
   font-size: 8px;
   padding: 2px;
 }
+
+@media only screen and (min-width: 600px) {
+  body main form {
+    width: 420px;
+  }
+
+  body main .track-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
