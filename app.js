@@ -1,6 +1,7 @@
 const artistForm = document.querySelector("#artist-select");
 const artistInput = document.querySelector(".artist-input");
 const tracksDiv = document.querySelector(".track-list")
+const toTop = document.querySelector("#to-top");
 
 artistForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -95,6 +96,11 @@ async function getTopSongs(token, artistID) {
       trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
       tracksDiv.append(trackDiv);
     })
+    if (response.data.tracks.length > 1) {
+      toTop.style.display = "inline-block";
+    } else {
+      toTop.style.display = "none";
+    }
     return response.data;
   } catch (error) {
     console.error(error);

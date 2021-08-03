@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0 auto;
   box-sizing: border-box;
@@ -34,7 +38,7 @@ body main form .artist-input {
   padding: 8px;
 }
 
-body main form button {
+body main button {
   width: fit-content;
   padding: 10px;
 }
@@ -58,4 +62,8 @@ body main .track-list div h2 {
 
 body main .track-list div p {
   padding: 5px;
+}
+
+body main a {
+  display: none;
 }
