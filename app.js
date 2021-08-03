@@ -5,16 +5,14 @@ const toTop = document.querySelector("#to-top");
 const showMore = document.querySelector("#others");
 const resultsUl = document.querySelector("#more-results");
 
-artistForm.addEventListener("submit", e => {
+artistForm.addEventListener("submit", async e => {
   e.preventDefault();
-  performActions(artistInput.value);
+  const token = await getToken();
+  const artistID = await getArtistID(token, artistInput.value);
+  const topSongs = await getTopSongs(token, artistID);
 })
 
-async function performActions(input) {
-  const token = await getToken();
-  const artistID = await getArtistID(token, input);
-  getTopSongs(token, artistID);
-}
+
 
 async function getToken() {
   try {
@@ -30,11 +28,9 @@ async function getToken() {
         "grant_type": "client_credentials"
       }
     };
-    
-    $.ajax(settings).done(function (response) {
-      console.log(response.access_token);
-      return response.access_token;
-    });
+    const response = await $.ajax(settings);
+    console.log(response.access_token);
+    return response.access_token;
   }
   catch (error) {
     console.error(error);
@@ -53,6 +49,7 @@ async function getArtistID(token, input) {
       }
     });
     console.log(response.data.artists.items[0].id);
+    // getTopSongs(token, response.data.artists.items[0].id);
     return response.data.artists.items[0].id;
   } catch (error) {
     console.error(error);
@@ -64,6 +61,7 @@ async function getArtistID(token, input) {
 async function getTopSongs(token, artistID) {
   try {
     deleteChildren(tracksDiv);
+    deleteChildren(resultsUl);
     const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
     const response = await axios.get(url, {
       headers: {
@@ -110,13 +108,13 @@ function deleteChildren(parent) {
   }
 }
 
-showMore.addEventListener("click", e => {
+showMore.addEventListener("click", async e => {
   e.preventDefault();
   displayMore(showMore.dataset.value);
 })
 
 async function displayMore(query) {
-  const token = await getToken();
+  const token = await getToken(query,false);
   const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
   const response = await axios.get(url, {
     headers: {
@@ -125,8 +123,23 @@ async function displayMore(query) {
   });
   response.data.artists.items.forEach(artist => {
     const artistLi = document.createElement("li");
-    artistLi.textContent = artist.name;
-    artistLi.value = artist.id;
+    const liA = document.createElement("a");
+    liA.href = "#";
+    liA.textContent = artist.name;
+    liA.setAttribute("data-value", artist.id);
+    liA.setAttribute("data-token", token);
+    console.log(artist.id);
+    liA.addEventListener("click", async e => {
+      e.preventDefault();
+      const newToken = await getToken();
+      getTopSongs(newToken, e.target.dataset.value);
+    })
+    const imgEl = document.createElement("img");
+    if (artist.images.length > 0) {
+      imgEl.setAttribute("src", artist.images[artist.images.length - 1].url);
+    }
+    artistLi.append(imgEl, liA);
     resultsUl.append(artistLi);
   })
 }
+

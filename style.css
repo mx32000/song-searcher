@@ -104,11 +104,11 @@ body main .track-list div img {
   margin-top: auto;
 }
 
-body main a {
+body main #to-top, body main #others {
   display: none;
 }
 
-body main a.show {
+body main a#to-top.show, body main a#others.show {
   display: inline-block;
 }
 
