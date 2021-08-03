@@ -65,7 +65,8 @@ async function getTopSongs(token, artistID) {
       }
     });
     console.log(response.data);
-    response.data.tracks.forEach(track => {
+    const limit = document.querySelector("#song-number").value;
+    response.data.tracks.slice(0,limit).forEach(track => {
       const trackDiv = document.createElement("div");
       //name
       const nameEl = document.createElement("h2");
@@ -85,7 +86,7 @@ async function getTopSongs(token, artistID) {
       trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
       tracksDiv.append(trackDiv);
     })
-    if (response.data.tracks.length > 1) {
+    if (tracksDiv.children.length > 1) {
       toTop.style.display = "inline-block";
     } else {
       toTop.style.display = "none";
