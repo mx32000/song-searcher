@@ -3,11 +3,18 @@ const artistInput = document.querySelector(".artist-input");
 const tracksDiv = document.querySelector(".track-list")
 const toTop = document.querySelector("#to-top");
 const showMore = document.querySelector("#others");
+const resultsUl = document.querySelector("#more-results");
 
 artistForm.addEventListener("submit", e => {
   e.preventDefault();
-  const token = getToken();
+  performActions(artistInput.value);
 })
+
+async function performActions(input) {
+  const token = await getToken();
+  const artistID = await getArtistID(token, input);
+  getTopSongs(token, artistID);
+}
 
 async function getToken() {
   try {
@@ -26,7 +33,6 @@ async function getToken() {
     
     $.ajax(settings).done(function (response) {
       console.log(response.access_token);
-      getArtistID(response.access_token)
       return response.access_token;
     });
   }
@@ -35,19 +41,18 @@ async function getToken() {
   }
 }
 
-async function getArtistID(token) {
+async function getArtistID(token, input) {
   try {
-    const query = encodeURIComponent(artistInput.value);
+    const query = encodeURIComponent(input);
+    showMore.setAttribute("data-value", query);
     console.log("artist", query);
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
-    // const url = "https://api.spotify.com/v1/search?q=Katy%20Perry&type=artist";
     const response = await axios.get(url, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
     console.log(response.data.artists.items[0].id);
-    getTopSongs(token, response.data.artists.items[0].id);
     return response.data.artists.items[0].id;
   } catch (error) {
     console.error(error);
@@ -58,7 +63,7 @@ async function getArtistID(token) {
 
 async function getTopSongs(token, artistID) {
   try {
-    deleteSongs(tracksDiv);
+    deleteChildren(tracksDiv);
     const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
     const response = await axios.get(url, {
       headers: {
@@ -99,8 +104,29 @@ async function getTopSongs(token, artistID) {
   }
 }
 
-function deleteSongs(parent) {
+function deleteChildren(parent) {
   while (parent.lastChild) {
     parent.removeChild(parent.lastChild);
   }
+}
+
+showMore.addEventListener("click", e => {
+  e.preventDefault();
+  displayMore(showMore.dataset.value);
+})
+
+async function displayMore(query) {
+  const token = await getToken();
+  const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
+  const response = await axios.get(url, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  response.data.artists.items.forEach(artist => {
+    const artistLi = document.createElement("li");
+    artistLi.textContent = artist.name;
+    artistLi.value = artist.id;
+    resultsUl.append(artistLi);
+  })
 }

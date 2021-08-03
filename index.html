@@ -24,7 +24,7 @@
   <main>
     <p>Enter the name of an artist to see their top songs on Spotify!</p>
     <form id="artist-select">
-      <input type="text" placeholder="Artist Name" class="artist-input">
+      <input type="text" placeholder="Artist Name" class="artist-input" required>
       <div class="form-group">
         <label for="song-number">How many?</label>
         <select name="song-number" id="song-number">
@@ -42,7 +42,8 @@
       </div>
       <button type="submit" id="artist-button">Search</button>
     </form>
-    <a href="#" id="others">Not who you were looking for?</a>
+    <a href="#" id="others" data-value="">Not who you were looking for?</a>
+    <ul id="more-results"></ul>
     <div class="track-list"></div>
     <a href="#" id="to-top"><button>To Top</button></a>
   </main>
