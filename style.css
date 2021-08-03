@@ -3,7 +3,7 @@ html {
 }
 
 * {
-  margin: 0 auto;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -12,10 +12,18 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+body header, body footer {
+  width: 100%;
+  background-color: #18215C;
 }
 
 body header h1 {
+  color: #dac033;
   padding: 20px;
+  font-family: 'Codystar', cursive;
 }
 
 body main {
@@ -85,8 +93,15 @@ body main .track-list div h2 {
 
 body main .track-list div p {
   padding: 5px;
+  font-size: 14px;
 }
 
 body main a {
   display: none;
+}
+
+body footer {
+  color: #dac033;
+  font-size: 8px;
+  padding: 2px;
 }
