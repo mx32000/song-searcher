@@ -114,8 +114,35 @@ body footer {
   padding: 2px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 768px) {
   body main .track-list {
     grid-template-columns: 1fr 1fr;
+  }
+  body header {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body main .track-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  body header {
+    font-size: 40px;
+  }
+  body footer {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  body main .track-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  body main .track-list {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
