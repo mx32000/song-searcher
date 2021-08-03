@@ -86,10 +86,8 @@ async function getTopSongs(token, artistID) {
       trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
       tracksDiv.append(trackDiv);
     })
-    if (tracksDiv.children.length > 1) {
-      toTop.style.display = "inline-block";
-    } else {
-      toTop.style.display = "none";
+    if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
+      toTop.classList.toggle("show");
     }
     return response.data;
   } catch (error) {

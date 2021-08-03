@@ -108,6 +108,10 @@ body main a {
   display: none;
 }
 
+body main .show {
+  display: inline-block;
+}
+
 body footer {
   color: #dac033;
   font-size: 8px;
@@ -132,6 +136,10 @@ body footer {
   }
   body footer {
     font-size: 12px;
+  }
+
+  body main .show {
+    display: none;
   }
 }
 

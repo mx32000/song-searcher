@@ -135,7 +135,7 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 | Make call for top songs and format data | H | 2hrs| 2hrs | 0hrs |
 | Render data on page using Flexbox / Grid | H | 3hrs| 2hrs | 0hrs |
 | Adjust for medium screens | L | 3hrs| 1hrs | 0hrs |
-| Adjust for larger screens | M | 3hrs| 1hrs | 0hrs |
+| Adjust for larger screens | M | 3hrs| 1.5hrs | 0hrs |
 | Deploy site | H | 2hrs| 0hrs | 0hrs |
 | Total | H | 29hrs| 6hrs | 0hrs |
 
