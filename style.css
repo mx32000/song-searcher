@@ -10,6 +10,7 @@ html {
 body {
   text-align: center;
   height: 100vh;
+  grid-template-columns: 1fr;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
@@ -43,6 +44,7 @@ body main form {
   flex-direction: column;
   width: 70%;
   align-items: center;
+  max-width: 420px;
 }
 
 body main form .artist-input {
@@ -75,12 +77,13 @@ body main button {
 }
 
 body main .track-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
 }
 
 body main .track-list div {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,6 +99,10 @@ body main .track-list div p {
   font-size: 14px;
 }
 
+body main .track-list div img {
+  margin-top: auto;
+}
+
 body main a {
   display: none;
 }
@@ -107,13 +114,7 @@ body footer {
 }
 
 @media only screen and (min-width: 600px) {
-  body main form {
-    width: 420px;
-  }
-
   body main .track-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    grid-template-columns: 1fr 1fr;
   }
 }
