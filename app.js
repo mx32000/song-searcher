@@ -1,5 +1,6 @@
 const artistForm = document.querySelector("#artist-select");
 const artistInput = document.querySelector(".artist-input");
+const tracksDiv = document.querySelector(".track-list")
 
 artistForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -73,6 +74,23 @@ async function getTopSongs(token, artistID) {
       }
     });
     console.log(response.data);
+    response.data.tracks.forEach(track => {
+      const trackDiv = document.createElement("div");
+      //name
+      const nameEl = document.createElement("h2");
+      nameEl.textContent = track.name;
+      //image
+      const imgEl = document.createElement("img");
+      imgEl.setAttribute("src", track.album.images[1].url);
+      //artists
+      const artistsEl = document.createElement("p");
+      const artists = track.artists.map(artist => artist.name);
+      const artistString = artists.join(", ");
+      artistsEl.textContent = artists.join(", ");
+
+      trackDiv.append(nameEl, artistsEl, imgEl);
+      tracksDiv.append(trackDiv);
+    })
     return response.data;
   } catch (error) {
     console.error(error);
