@@ -12,8 +12,9 @@ const handler = async (event) => {
   // } catch (error) {
   //   return { statusCode: 500, body: error.toString() }
   // }
+  let whereami = ""
   try {
-    console.log("HELLO THERE");
+    whereami = "step1";
     const settings = {
       "url": "https://accounts.spotify.com/api/token",
       "method": "POST",
@@ -26,20 +27,21 @@ const handler = async (event) => {
         "grant_type": "client_credentials"
       }
     };
-    console.log("HELLO AGAIN");
+    whereami = "step2";
     const response = await $.ajax(settings);
-    console.log(response);
+    whereami = "step3";
     return {
       statusCode: 200,
       body: response.access_token
     }
   }
   catch (error) {
-    console.log("RIPRIP");
-    console.log(error.response.status);
     return {
       statusCode: 500,
-      body: error.toString()
+      body: {
+        err: error.toString(),
+        step: whereami
+      }
     }
   }
 }
