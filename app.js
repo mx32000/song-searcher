@@ -14,7 +14,7 @@ artistForm.addEventListener("submit", async e => {
 
 async function sayHello() {
   try {
-    const response = await axios.get("https://gracious-gates-c0f47a.netlify.app/.netlify/functions/hello-world?message=everyone");
+    const response = await axios.get("https://gracious-gates-c0f47a.netlify.app/.netlify/functions/hello-world");
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -24,26 +24,26 @@ async function sayHello() {
 sayHello();
 
 async function getToken() {
-  try {
-    const settings = {
-      "url": "https://accounts.spotify.com/api/token",
-      "method": "POST",
-      "timeout": 0,
-      "headers": {
-        "Authorization": "Basic NDQ2NzczMTI1OTNmNDZhOGE4ODBmZjkwOTlkMDM5Njk6MjE3NWRmYWM1MjRkNGU5NWJmMDVjNjEwNjgwMTE1MzM=",
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      "data": {
-        "grant_type": "client_credentials"
-      }
-    };
-    const response = await $.ajax(settings);
-    console.log(response.access_token);
-    return response.access_token;
-  }
-  catch (error) {
-    console.error(error);
-  }
+  // try {
+  //   const settings = {
+  //     "url": "https://accounts.spotify.com/api/token",
+  //     "method": "POST",
+  //     "timeout": 0,
+  //     "headers": {
+  //       "Authorization": "Basic NDQ2NzczMTI1OTNmNDZhOGE4ODBmZjkwOTlkMDM5Njk6MjE3NWRmYWM1MjRkNGU5NWJmMDVjNjEwNjgwMTE1MzM=",
+  //       "Content-Type": "application/x-www-form-urlencoded"
+  //     },
+  //     "data": {
+  //       "grant_type": "client_credentials"
+  //     }
+  //   };
+  //   const response = await $.ajax(settings);
+  //   console.log(response.access_token);
+  //   return response.access_token;
+  // }
+  // catch (error) {
+  //   console.error(error);
+  // }
 }
 
 async function getArtistID(token, input) {
