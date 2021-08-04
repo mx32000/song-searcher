@@ -2,7 +2,7 @@
 
 ## Song Searcher
 
-The name of your project with deployed URL.
+[Song Searcher](https://gracious-gates-c0f47a.netlify.app)
 
 ## Project Description
 
