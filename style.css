@@ -16,30 +16,30 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-body header, body footer {
+header, footer {
   width: 100%;
   background-color: #18215C;
 }
 
-body header h1 {
+header h1 {
   color: #dac033;
   padding: 20px;
   font-family: 'Codystar', cursive;
 }
 
-body main {
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
 }
 
-body main > p {
+main .description {
   width: 80%;
   padding: 10px;
 }
 
-body main form {
+main form {
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -47,13 +47,13 @@ body main form {
   max-width: 420px;
 }
 
-body main form .artist-input {
+main form .artist-input {
   margin: 10px;
   padding: 8px;
   width: 100%;
 }
 
-body main form .form-group {
+main form .form-group {
   margin: 5px;
   width: 100%;
   display: flex;
@@ -61,29 +61,29 @@ body main form .form-group {
   align-items: center;
 }
 
-body main form .form-group label {
+main form .form-group label {
   margin: 0 5px;
 }
 
-body main form .form-group #song-number {
+main form .form-group #song-number {
   padding: 3px;
   margin: 0 5px;
 }
 
-body main button {
+main button {
   width: fit-content;
   padding: 10px;
   margin: 5px;
 }
 
-body main .track-list {
+main .track-list {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
 }
 
-body main .track-list div {
+main .track-list div {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -91,66 +91,66 @@ body main .track-list div {
   padding: 20px 0;
 }
 
-body main .track-list div h2 {
+main .track-list div h2 {
   padding: 5px;
 }
 
-body main .track-list div p {
+main .track-list div p {
   padding: 5px;
   font-size: 14px;
 }
 
-body main .track-list div img {
+main .track-list div img {
   margin-top: auto;
 }
 
-body main #to-top, body main #others {
+main #to-top, main #others {
   display: none;
 }
 
-body main a#to-top.show, body main a#others.show {
+main a#to-top.show, main a#others.show {
   display: inline-block;
 }
 
-body footer {
+footer {
   color: #dac033;
   font-size: 8px;
   padding: 2px;
 }
 
 @media only screen and (min-width: 768px) {
-  body main .track-list {
+  main .track-list {
     grid-template-columns: 1fr 1fr;
   }
-  body header {
+  header {
     font-size: 36px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  body main .track-list {
+  main .track-list {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  body header {
+  header {
     font-size: 40px;
   }
-  body footer {
+  footer {
     font-size: 12px;
   }
 
-  body main #to-top {
+  main a#to-top.show {
     display: none;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  body main .track-list {
+  main .track-list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media only screen and (min-width: 1600px) {
-  body main .track-list {
+  main .track-list {
     grid-template-columns: repeat(5, 1fr);
   }
 }
