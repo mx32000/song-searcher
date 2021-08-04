@@ -14,7 +14,7 @@ artistForm.addEventListener("submit", async e => {
 
 async function sayHello(message) {
   try {
-    const response = await axios.get(`/.netlify/functions/hello?message=${message}`);
+    const response = await axios.get(`https://gracious-gates-c0f47a.netlify.app/.netlify/functions/hello?message=${message}`);
     console.log(response);
   } catch (error) {
     console.error(error);
