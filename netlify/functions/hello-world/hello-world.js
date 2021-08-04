@@ -36,13 +36,7 @@ const handler = async (event) => {
     }
   }
   catch (error) {
-    return {
-      statusCode: 500,
-      body: {
-        err: error.toString(),
-        step: whereami
-      }
-    }
+    return { statusCode: 500, body: whereami }
   }
 }
 
