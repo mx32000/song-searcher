@@ -129,14 +129,14 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 | --- | :---: |  :---: | :---: | :---: |
 | Make successful call to API with Postman | H | 3hrs| 2hrs | 0hrs |
 | Make successful call to API in VSCode | H | 3hrs| 4hrs | 0hrs |
-| Hide credentials from Github | H | 5hrs| 3hrs | 0hrs |
+| Hide credentials from Github | H | 5hrs| 5hrs | 0hrs |
 | Text and search bar/submit | H | 3hrs| 1hrs | 0hrs |
 | Make search call and get artist | H | 2hrs| 2.5hrs | 0hrs |
 | Make call for top songs and format data | H | 2hrs| 2hrs | 0hrs |
 | Render data on page using Flexbox / Grid | H | 3hrs| 2hrs | 0hrs |
 | Adjust for medium screens | L | 3hrs| 1hrs | 0hrs |
 | Adjust for larger screens | M | 3hrs| 1.5hrs | 0hrs |
-| Deploy site | H | 2hrs| 0hrs | 0hrs |
+| Deploy site | H | 2hrs| 1hr | 0hrs |
 | Total | H | 29hrs| 6hrs | 0hrs |
 
 
