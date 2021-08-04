@@ -150,7 +150,7 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 | Implement search for random song from artist | L | 3hrs| 0hrs | 0hrs |
 | Handle token expired error | L | 2hrs| 0hrs | 0hrs |
 | Handle no search results error | H | 2hrs| 1hrs | 0hrs |
-| Option to see more artists that fit search | L | 3hrs| 3hrs | 0hrs |
+| Option to see more artists that fit search | L | 3hrs| 4hrs | 0hrs |
 | Follow Spotify design guidelines | M | 3hrs| 0hrs | 0hrs |
 | Total | H | 18hrs| 0hrs | 0hrs |
 

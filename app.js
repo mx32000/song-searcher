@@ -8,9 +8,16 @@ const errorDisplay = document.querySelector(".error");
 
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
+  deleteChildren(tracksDiv);
+  deleteChildren(resultsUl);
+  document.querySelector("#others").classList.remove("show");
   const token = await getToken();
-  const artistID = await getArtistID(token, artistInput.value);
-  const topSongs = await getTopSongs(token, artistID);
+  const artistResults = await getArtistID(token, artistInput.value);
+  if (artistResults.length ===0) {
+    alert(`NO ARTISTS FOUND FOR QUERY: ${artistInput.value}`);
+    return;
+  }
+  const topSongs = await getTopSongs(token, artistResults[0].id, artistResults.length > 1);
 })
 
 async function getToken() {
@@ -33,13 +40,13 @@ async function getArtistID(token, input) {
         'Authorization': `Bearer ${token}`
       }
     });
-    return response.data.artists.items[0].id;
+    return response.data.artists.items;
   } catch (error) {
     console.error(error);
   }
 }
 
-async function getTopSongs(token, artistID) {
+async function getTopSongs(token, artistID, moreOptionsAvailable) {
   try {
     deleteChildren(tracksDiv);
     deleteChildren(resultsUl);
@@ -53,7 +60,6 @@ async function getTopSongs(token, artistID) {
     //if artist has no top tracks
     if (tracks.length === 0) {
       const artist = await getArtistByID(token, artistID);
-      console.log(artist.name);
       alert(`NO TOP TRACKS FOUND FOR ARTIST: ${artist.name}`);
       return response.data;
     }
@@ -84,7 +90,7 @@ async function getTopSongs(token, artistID) {
       toTop.classList.toggle("show");
     }
     //check for whether show more button should show
-    if ((tracksDiv.children.length > 1) ^ (showMore.classList.contains("show"))) {
+    if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
       showMore.classList.toggle("show");
     }
     return response.data;
@@ -122,13 +128,18 @@ async function displayMore(query) {
     liA.addEventListener("click", async e => {
       e.preventDefault();
       const newToken = await getToken();
-      getTopSongs(newToken, e.target.dataset.value);
+      getTopSongs(newToken, e.target.dataset.value, true);
     })
-    const imgEl = document.createElement("img");
+    let avatar = null;
     if (artist.images.length > 0) {
-      imgEl.setAttribute("src", artist.images[artist.images.length - 1].url);
+      avatar = document.createElement("img");
+      avatar.setAttribute("src", artist.images[artist.images.length - 1].url);
+    } else {
+      avatar = document.createElement("div");
+      avatar.textContent = "(No image available)";
+      avatar.classList.add("blank-image");
     }
-    artistLi.append(imgEl, liA);
+    artistLi.append(avatar, liA);
     resultsUl.append(artistLi);
   })
 }
