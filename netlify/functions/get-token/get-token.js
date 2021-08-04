@@ -23,7 +23,7 @@ const handler = async (event) => {
       "method": "POST",
       "timeout": 0,
       "headers": {
-        "Authorization": "Basic NDQ2NzczMTI1OTNmNDZhOGE4ODBmZjkwOTlkMDM5Njk6MjE3NWRmYWM1MjRkNGU5NWJmMDVjNjEwNjgwMTE1MzM=",
+        "Authorization": `Basic ${Buffer.from(process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET, 'base64')}`,
         "Content-Type": "application/x-www-form-urlencoded"
       },
       "data": {
