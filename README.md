@@ -111,9 +111,9 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 |  Day | Deliverable | Status
 |---|---| ---|
 |July 30| Wireframes / Priority Matrix / Timeframes / Make successful API call | Complete
-|August 2| Project Approval / Core Application Structure (HTML, CSS, etc.) / Figure out how to hide client credentials | Incomplete
-|August 3| JS / dynamic content | Incomplete
-|August 4| Responsiveness / MVP | Incomplete
+|August 2| Project Approval / Core Application Structure (HTML, CSS, etc.) / Figure out how to hide client credentials | Complete (August 4)
+|August 3| JS / dynamic content | Complete
+|August 4| Responsiveness / MVP | Complete
 |August 5| Finishing touches / Post MVP | Incomplete
 |August 6| Presentations | Incomplete
 
@@ -149,7 +149,7 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 | Create tabs for multiple functions | L | 3hrs| 0hrs | 0hrs |
 | Implement search for random song from artist | L | 3hrs| 0hrs | 0hrs |
 | Handle token expired error | L | 2hrs| 0hrs | 0hrs |
-| Handle no search results error | H | 2hrs| 0hrs | 0hrs |
+| Handle no search results error | H | 2hrs| 1hrs | 0hrs |
 | Option to see more artists that fit search | L | 3hrs| 3hrs | 0hrs |
 | Follow Spotify design guidelines | M | 3hrs| 0hrs | 0hrs |
 | Total | H | 18hrs| 0hrs | 0hrs |
@@ -165,4 +165,4 @@ function reverse(string) {
 ```
 
 ## Change Log
- Use this section to document what changes were made and the reasoning behind those changes.  
+Decided against using the same token until it needed refreshing, instead, gets a new token for each group of requests - nowhere close to rate limi so this is okay

@@ -4,6 +4,7 @@ const tracksDiv = document.querySelector(".track-list")
 const toTop = document.querySelector("#to-top");
 const showMore = document.querySelector("#others");
 const resultsUl = document.querySelector("#more-results");
+const errorDisplay = document.querySelector(".error");
 
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
@@ -48,8 +49,17 @@ async function getTopSongs(token, artistID) {
         'Authorization': `Bearer ${token}`
       }
     });
+    const tracks = response.data.tracks;
+    //if artist has no top tracks
+    if (tracks.length === 0) {
+      const artist = await getArtistByID(token, artistID);
+      console.log(artist.name);
+      alert(`NO TOP TRACKS FOUND FOR ARTIST: ${artist.name}`);
+      return response.data;
+    }
+    //grab how many songs from select input
     const limit = document.querySelector("#song-number").value;
-    response.data.tracks.slice(0,limit).forEach(track => {
+    tracks.slice(0,limit).forEach(track => {
       const trackDiv = document.createElement("div");
       //name
       const nameEl = document.createElement("h2");
@@ -69,10 +79,12 @@ async function getTopSongs(token, artistID) {
       trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
       tracksDiv.append(trackDiv);
     })
+    //check for whether to top button should show
     if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
       toTop.classList.toggle("show");
     }
-    if ((tracksDiv.children.length > 0) ^ (showMore.classList.contains("show"))) {
+    //check for whether show more button should show
+    if ((tracksDiv.children.length > 1) ^ (showMore.classList.contains("show"))) {
       showMore.classList.toggle("show");
     }
     return response.data;
@@ -121,3 +133,16 @@ async function displayMore(query) {
   })
 }
 
+async function getArtistByID(token, artistID) {
+  try {
+    const url = `https://api.spotify.com/v1/artists/${artistID}`;
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data
+  } catch (error) {
+    console.error(error);
+  }
+}
