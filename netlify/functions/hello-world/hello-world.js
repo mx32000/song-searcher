@@ -26,12 +26,14 @@ const handler = async (event) => {
       }
     };
     const response = await $.ajax(settings);
+    console.log(response);
     return {
       statusCode: 200,
       body: response.access_token
     }
   }
   catch (error) {
+    console.log(error.response.status);
     return {
       statusCode: 500,
       body: error.toString()
