@@ -12,6 +12,7 @@ const handler = async (event) => {
   // } catch (error) {
   //   return { statusCode: 500, body: error.toString() }
   // }
+  var $ = require('jquery');
   let whereami = ""
   try {
     whereami = "step1";
