@@ -76,6 +76,13 @@ main button {
   margin: 5px;
 }
 
+main #spotify-logo {
+  box-sizing: content-box;
+  height: 70px;
+  padding: 35px;
+  display: hidden;
+}
+
 main #more-results {
   list-style: none;
   display: flex;
@@ -129,11 +136,11 @@ main .track-list div img {
   margin-top: auto;
 }
 
-main #to-top, main #others {
+main #to-top, main #others, main #spotify-logo {
   display: none;
 }
 
-main a#to-top.show, main a#others.show {
+main a#to-top.show, main a#others.show, main img#spotify-logo.show {
   display: inline-block;
 }
 

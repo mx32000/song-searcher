@@ -5,14 +5,16 @@ const toTop = document.querySelector("#to-top");
 const showMore = document.querySelector("#others");
 const resultsUl = document.querySelector("#more-results");
 const errorDisplay = document.querySelector(".error");
+const spotifyLogo = document.querySelector("#spotify-logo")
 
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
+  const token = await getToken();
+  const artistResults = await getArtistID(token, artistInput.value);
+  spotifyLogo.classList.add("show");
   deleteChildren(tracksDiv);
   deleteChildren(resultsUl);
   document.querySelector("#others").classList.remove("show");
-  const token = await getToken();
-  const artistResults = await getArtistID(token, artistInput.value);
   if (artistResults.length ===0) {
     alert(`NO ARTISTS FOUND FOR QUERY: ${artistInput.value}`);
     return;
