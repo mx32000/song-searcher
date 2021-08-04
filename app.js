@@ -15,7 +15,6 @@ artistForm.addEventListener("submit", async e => {
 async function getToken() {
   try {
     const response = await axios.get("https://gracious-gates-c0f47a.netlify.app/.netlify/functions/get-token");
-    console.log(response);
     return response.data.token;
   } catch (error) {
     console.log(error.response.data);
@@ -27,22 +26,17 @@ async function getArtistID(token, input) {
   try {
     const query = encodeURIComponent(input);
     showMore.setAttribute("data-value", query);
-    console.log("artist", query);
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
     const response = await axios.get(url, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
-    console.log(response.data.artists.items[0].id);
-    // getTopSongs(token, response.data.artists.items[0].id);
     return response.data.artists.items[0].id;
   } catch (error) {
     console.error(error);
   }
 }
-
-// const url = 'https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02/top-tracks?&market=US';
 
 async function getTopSongs(token, artistID) {
   try {
@@ -54,7 +48,6 @@ async function getTopSongs(token, artistID) {
         'Authorization': `Bearer ${token}`
       }
     });
-    console.log(response.data);
     const limit = document.querySelector("#song-number").value;
     response.data.tracks.slice(0,limit).forEach(track => {
       const trackDiv = document.createElement("div");
@@ -114,7 +107,6 @@ async function displayMore(query) {
     liA.textContent = artist.name;
     liA.setAttribute("data-value", artist.id);
     liA.setAttribute("data-token", token);
-    console.log(artist.id);
     liA.addEventListener("click", async e => {
       e.preventDefault();
       const newToken = await getToken();
