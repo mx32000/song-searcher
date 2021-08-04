@@ -12,7 +12,16 @@ artistForm.addEventListener("submit", async e => {
   const topSongs = await getTopSongs(token, artistID);
 })
 
+async function sayHello(message) {
+  try {
+    const response = await axios.get(`/.netlify/functions/hello?message=${message}`);
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
+sayHello("everyone");
 
 async function getToken() {
   try {
