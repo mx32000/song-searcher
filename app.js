@@ -12,16 +12,16 @@ artistForm.addEventListener("submit", async e => {
   const topSongs = await getTopSongs(token, artistID);
 })
 
-async function sayHello(message) {
+async function sayHello() {
   try {
-    const response = await axios.get(`https://gracious-gates-c0f47a.netlify.app/.netlify/functions/hello?message=${message}`);
+    const response = await axios.get("https://gracious-gates-c0f47a.netlify.app/.netlify/functions/hello-world?message=everyone");
     console.log(response);
   } catch (error) {
     console.error(error);
   }
 }
 
-sayHello("everyone");
+sayHello();
 
 async function getToken() {
   try {
