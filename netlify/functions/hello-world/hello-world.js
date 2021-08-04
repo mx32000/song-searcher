@@ -35,7 +35,7 @@ const handler = async (event) => {
     whereami = "step3";
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${response.access_token}` })
+      body: JSON.stringify({ token: response.access_token })
     }
   }
   catch (error) {

@@ -7,7 +7,7 @@ const resultsUl = document.querySelector("#more-results");
 
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
-  const token = await getToken();
+  const token = await sayHello();
   const artistID = await getArtistID(token, artistInput.value);
   const topSongs = await getTopSongs(token, artistID);
 })
@@ -16,6 +16,7 @@ async function sayHello() {
   try {
     const response = await axios.get("https://gracious-gates-c0f47a.netlify.app/.netlify/functions/hello-world");
     console.log(response);
+    return response.data.token;
   } catch (error) {
     console.log(error.response.data);
     console.error(error);
