@@ -17,8 +17,7 @@ async function sayHello() {
     const response = await axios.get("https://gracious-gates-c0f47a.netlify.app/.netlify/functions/hello-world");
     console.log(response);
   } catch (error) {
-    console.log(error.err);
-    console.log(error.step);
+    console.log(error.response.data);
     console.error(error);
   }
 }
