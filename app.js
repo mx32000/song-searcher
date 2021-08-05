@@ -47,7 +47,7 @@ async function getArtistID(query) {
     return response.data.artists.items;
   } catch (error) {
     if (tokenExpired(error)) {
-      token = getToken();
+      token = await getToken();
       console.log("ayyyy lmao");
       return getArtistID(query);
     }
