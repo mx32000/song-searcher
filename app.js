@@ -16,7 +16,6 @@ async function setToken() {
 
 setToken();
 
-
 async function getToken() {
   try {
     const response = await axios.get("https://gracious-gates-c0f47a.netlify.app/.netlify/functions/get-token");
@@ -42,6 +41,18 @@ artistForm.addEventListener("submit", async e => {
   const topSongs = await getTopSongs(artistResults[0].id, artistResults.length > 1);
 })
 
+showMore.addEventListener("click", async e => {
+  e.preventDefault();
+  displayMore(showMore.dataset.value);
+})
+
+hideResults.addEventListener("click", e => {
+  e.preventDefault();
+  deleteChildren(resultsUl);
+  hideResults.classList.remove("show");
+  showMore.classList.add("show");
+})
+
 async function getArtistID(query) {
   try {
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
@@ -53,7 +64,7 @@ async function getArtistID(query) {
     return response.data.artists.items;
   } catch (error) {
     if (tokenExpired(error)) {
-      token = await getToken();
+      setToken();
       return getArtistID(query);
     }
     console.error(error);
@@ -113,7 +124,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     return response.data;
   } catch (error) {
     if (tokenExpired(error)) {
-      token = await getToken();
+      setToken();
       return getTopSongs(artistID, moreOptionsAvailable);
     }
     console.error(error);
@@ -126,10 +137,7 @@ function deleteChildren(parent) {
   }
 }
 
-showMore.addEventListener("click", async e => {
-  e.preventDefault();
-  displayMore(showMore.dataset.value);
-})
+
 
 async function displayMore(query) {
   try {
@@ -167,7 +175,7 @@ async function displayMore(query) {
     return response.data;
   } catch (error) {
     if (tokenExpired(error)) {
-      token = await getToken();
+      setToken();
       return displayMore(query);
     }
     console.error(error);
@@ -185,16 +193,10 @@ async function getArtistByID(artistID) {
     return response.data
   } catch (error) {
     if (tokenExpired(error)) {
-      token = await getToken();
+      setToken();
       return getArtistByID(artistID);
     }
     console.error(error);
   }
 }
 
-hideResults.addEventListener("click", e => {
-  e.preventDefault();
-  deleteChildren(resultsUl);
-  hideResults.classList.remove("show");
-  showMore.classList.add("show");
-})
