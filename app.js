@@ -10,11 +10,13 @@ const spotifyLogo = document.querySelector("#spotify-logo")
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
   const token = await getToken();
-  const artistResults = await getArtistID(token, artistInput.value);
+  const query = encodeURIComponent(artistInput.value);
+  const artistResults = await getArtistID(token, query);
   if (artistResults.length ===0) {
     alert(`NO ARTISTS FOUND FOR QUERY: ${artistInput.value}`);
     return;
   }
+  showMore.setAttribute("data-value", query);
   const topSongs = await getTopSongs(token, artistResults[0].id, artistResults.length > 1);
 })
 
@@ -28,10 +30,8 @@ async function getToken() {
   }
 }
 
-async function getArtistID(token, input) {
+async function getArtistID(token, query) {
   try {
-    const query = encodeURIComponent(input);
-    showMore.setAttribute("data-value", query);
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
     const response = await axios.get(url, {
       headers: {
