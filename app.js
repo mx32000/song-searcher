@@ -22,8 +22,7 @@ function tokenExpired(error) {
   return error.response.data.error.message === "The access token expired";
 }
 
-// let token = getToken();
-let token = "BQDwaTZ91xt6aMhIkawOL3EmSn3Tv1Q5ZmF3XqRhQ1al-9_CKoyx6zzMf9nymXyx-haC2ZmQCXgLG7SaYOA";
+let token = getToken();
 
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
@@ -44,8 +43,7 @@ async function getArtistID(query) {
     console.log(url);
     const response = await axios.get(url, {
       headers: {
-        'Authorization': `Bearer BQDC1DqewiUECJO3XLWkhe0mvXIlphVpQR4pAMHN2-mQGEU6jFhGweCv_7vSgNqSpqDzaC8MkN9Tt9485zA
-        `
+        'Authorization': `Bearer ${token}`
       }
     });
     return response.data.artists.items;
@@ -66,7 +64,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
     const response = await axios.get(url, {
       headers: {
-        'Authorization': `Bearer BQDC1DqewiUECJO3XLWkhe0mvXIlphVpQR4pAMHN2-mQGEU6jFhGweCv_7vSgNqSpqDzaC8MkN9Tt9485zA`
+        'Authorization': `Bearer ${token}`
       }
     });
     const tracks = response.data.tracks;
@@ -136,7 +134,7 @@ async function displayMore(query) {
     console.log(token);
     const response = await axios.get(url, {
       headers: {
-        'Authorization': `Bearer BQDC1DqewiUECJO3XLWkhe0mvXIlphVpQR4pAMHN2-mQGEU6jFhGweCv_7vSgNqSpqDzaC8MkN9Tt9485zA`
+        'Authorization': `Bearer ${token}`
       }
     });
     spotifyLogo.classList.add("show");
