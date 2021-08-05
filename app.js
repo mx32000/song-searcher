@@ -133,6 +133,7 @@ showMore.addEventListener("click", async e => {
 async function displayMore(query) {
   try {
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
+    console.log(token);
     const response = await axios.get(url, {
       headers: {
         'Authorization': `Bearer ${token}`
