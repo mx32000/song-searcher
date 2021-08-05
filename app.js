@@ -5,7 +5,8 @@ const toTop = document.querySelector("#to-top");
 const showMore = document.querySelector("#others");
 const resultsUl = document.querySelector("#more-results");
 const errorDisplay = document.querySelector(".error");
-const spotifyLogo = document.querySelector("#spotify-logo")
+const spotifyLogo = document.querySelector("#spotify-logo");
+const hideResults = document.querySelector("#hide");
 
 let token = null;
 
@@ -77,6 +78,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     deleteChildren(tracksDiv);
     deleteChildren(resultsUl);
     spotifyLogo.classList.remove("show");
+    hideResults.classList.remove("show");
     //check for whether show more button should show
     if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
       showMore.classList.toggle("show");
@@ -146,6 +148,7 @@ async function displayMore(query) {
     });
     spotifyLogo.classList.add("show");
     showMore.classList.remove("show");
+    hideResults.classList.add("show");
     response.data.artists.items.forEach(artist => {
       const artistLi = document.createElement("li");
       const liA = document.createElement("a");
@@ -195,3 +198,9 @@ async function getArtistByID(artistID) {
     console.error(error);
   }
 }
+
+hideResults.addEventListener("click", e => {
+  e.preventDefault();
+  deleteChildren(resultsUl);
+  hideResults.classList.remove("show");
+})

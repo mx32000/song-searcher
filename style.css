@@ -136,11 +136,11 @@ main .track-list div img {
   margin-top: auto;
 }
 
-main #to-top, main #others, main #spotify-logo {
+main #to-top, main #others, main #spotify-logo, main #hide {
   display: none;
 }
 
-main a#to-top.show, main a#others.show, main img#spotify-logo.show {
+main a#to-top.show, main a#others.show, main img#spotify-logo.show, main a#hide.show {
   display: inline-block;
 }
 
