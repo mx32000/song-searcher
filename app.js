@@ -42,12 +42,10 @@ artistForm.addEventListener("submit", async e => {
 })
 
 showMore.addEventListener("click", async e => {
-  e.preventDefault();
   displayMore(showMore.dataset.value);
 })
 
 hideResults.addEventListener("click", e => {
-  e.preventDefault();
   deleteChildren(resultsUl);
   hideResults.classList.remove("show");
   showMore.classList.add("show");
@@ -131,14 +129,6 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
   }
 }
 
-function deleteChildren(parent) {
-  while (parent.lastChild) {
-    parent.removeChild(parent.lastChild);
-  }
-}
-
-
-
 async function displayMore(query) {
   try {
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
@@ -200,3 +190,8 @@ async function getArtistByID(artistID) {
   }
 }
 
+function deleteChildren(parent) {
+  while (parent.lastChild) {
+    parent.removeChild(parent.lastChild);
+  }
+}
