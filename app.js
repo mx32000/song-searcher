@@ -65,7 +65,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
     const response = await axios.get(url, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer BQDC1DqewiUECJO3XLWkhe0mvXIlphVpQR4pAMHN2-mQGEU6jFhGweCv_7vSgNqSpqDzaC8MkN9Tt9485zA`
       }
     });
     const tracks = response.data.tracks;
