@@ -11,10 +11,11 @@ artistForm.addEventListener("submit", async e => {
   e.preventDefault();
   const token = await getToken();
   const artistResults = await getArtistID(token, artistInput.value);
-  spotifyLogo.classList.add("show");
   deleteChildren(tracksDiv);
   deleteChildren(resultsUl);
-  document.querySelector("#others").classList.remove("show");
+  if (tracksDiv.children.length === 0 && resultsUl.children.length === 0) {
+    spotifyLogo.classList.remove("show");
+  }
   if (artistResults.length ===0) {
     alert(`NO ARTISTS FOUND FOR QUERY: ${artistInput.value}`);
     return;
@@ -58,6 +59,10 @@ async function getTopSongs(token, artistID, moreOptionsAvailable) {
         'Authorization': `Bearer ${token}`
       }
     });
+    //check for whether show more button should show
+    if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
+      showMore.classList.toggle("show");
+    }
     const tracks = response.data.tracks;
     //if artist has no top tracks
     if (tracks.length === 0) {
@@ -65,6 +70,7 @@ async function getTopSongs(token, artistID, moreOptionsAvailable) {
       alert(`NO TOP TRACKS FOUND FOR ARTIST: ${artist.name}`);
       return response.data;
     }
+    spotifyLogo.classList.add("show");
     //grab how many songs from select input
     const limit = document.querySelector("#song-number").value;
     tracks.slice(0,limit).forEach(track => {
@@ -78,7 +84,6 @@ async function getTopSongs(token, artistID, moreOptionsAvailable) {
       //artists
       const artistsEl = document.createElement("p");
       const artists = track.artists.map(artist => artist.name);
-      const artistString = artists.join(", ");
       artistsEl.textContent = artists.join(", ");
       //album
       const albumEl = document.createElement("p");
@@ -90,10 +95,6 @@ async function getTopSongs(token, artistID, moreOptionsAvailable) {
     //check for whether to top button should show
     if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
       toTop.classList.toggle("show");
-    }
-    //check for whether show more button should show
-    if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
-      showMore.classList.toggle("show");
     }
     return response.data;
   } catch (error) {
@@ -120,6 +121,7 @@ async function displayMore(query) {
       'Authorization': `Bearer ${token}`
     }
   });
+  spotifyLogo.classList.add("show");
   response.data.artists.items.forEach(artist => {
     const artistLi = document.createElement("li");
     const liA = document.createElement("a");
