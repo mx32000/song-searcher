@@ -11,11 +11,6 @@ artistForm.addEventListener("submit", async e => {
   e.preventDefault();
   const token = await getToken();
   const artistResults = await getArtistID(token, artistInput.value);
-  deleteChildren(tracksDiv);
-  deleteChildren(resultsUl);
-  if (tracksDiv.children.length === 0 && resultsUl.children.length === 0) {
-    spotifyLogo.classList.remove("show");
-  }
   if (artistResults.length ===0) {
     alert(`NO ARTISTS FOUND FOR QUERY: ${artistInput.value}`);
     return;
@@ -53,6 +48,7 @@ async function getTopSongs(token, artistID, moreOptionsAvailable) {
   try {
     deleteChildren(tracksDiv);
     deleteChildren(resultsUl);
+    spotifyLogo.classList.remove("show");
     const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
     const response = await axios.get(url, {
       headers: {
@@ -132,6 +128,7 @@ async function displayMore(query) {
     liA.addEventListener("click", async e => {
       e.preventDefault();
       const newToken = await getToken();
+      
       getTopSongs(newToken, e.target.dataset.value, true);
     })
     let avatar = null;
