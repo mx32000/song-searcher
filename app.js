@@ -27,7 +27,6 @@ async function getToken() {
 }
 
 function tokenExpired(error) {
-  console.log("in token expired");
   return error.response.data.error.message === "The access token expired";
 }
 
@@ -45,9 +44,7 @@ artistForm.addEventListener("submit", async e => {
 
 async function getArtistID(query) {
   try {
-    console.log("query:", query);
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
-    console.log(url);
     const response = await axios.get(url, {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -57,11 +54,8 @@ async function getArtistID(query) {
   } catch (error) {
     if (tokenExpired(error)) {
       token = await getToken();
-      console.log(token);
-      console.log("ayyyy lmao");
       return getArtistID(query);
     }
-    console.log(error.response);
     console.error(error);
   }
 }
@@ -140,7 +134,6 @@ showMore.addEventListener("click", async e => {
 async function displayMore(query) {
   try {
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
-    console.log(token);
     const response = await axios.get(url, {
       headers: {
         'Authorization': `Bearer ${token}`
