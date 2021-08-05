@@ -52,6 +52,7 @@ async function getArtistID(query) {
       console.log("ayyyy lmao");
       return getArtistID(query);
     }
+    console.log(error.response);
     console.error(error);
   }
 }
