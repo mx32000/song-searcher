@@ -7,6 +7,14 @@ const resultsUl = document.querySelector("#more-results");
 const errorDisplay = document.querySelector(".error");
 const spotifyLogo = document.querySelector("#spotify-logo")
 
+let token = null;
+
+async function setToken() {
+  token = await getToken();
+}
+
+setToken();
+
 
 async function getToken() {
   try {
@@ -21,8 +29,6 @@ function tokenExpired(error) {
   console.log("in token expired");
   return error.response.data.error.message === "The access token expired";
 }
-
-let token = getToken();
 
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
