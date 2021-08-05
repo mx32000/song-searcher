@@ -203,4 +203,5 @@ hideResults.addEventListener("click", e => {
   e.preventDefault();
   deleteChildren(resultsUl);
   hideResults.classList.remove("show");
+  showMore.classList.add("show");
 })
