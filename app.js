@@ -136,7 +136,7 @@ async function displayMore(query) {
     console.log(token);
     const response = await axios.get(url, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer BQDC1DqewiUECJO3XLWkhe0mvXIlphVpQR4pAMHN2-mQGEU6jFhGweCv_7vSgNqSpqDzaC8MkN9Tt9485zA`
       }
     });
     spotifyLogo.classList.add("show");
