@@ -145,7 +145,7 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Selection menu to choose how many songs to display | M | 1hr| .5hrs | 0hrs |
-| "To Top" button on mobile screen | M | 1hr| .5hrs | 0hrs |
+| "To Top" button on mobile screen | M | 1hr| 1hr | 0hrs |
 | Create tabs for multiple functions | L | 3hrs| 0hrs | 0hrs |
 | Implement search for random song from artist | L | 3hrs| 0hrs | 0hrs |
 | Handle token expired error | L | 2hrs| 2hrs | 0hrs |
