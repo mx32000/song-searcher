@@ -43,7 +43,8 @@ async function getArtistID(query) {
     console.log(url);
     const response = await axios.get(url, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer BQDC1DqewiUECJO3XLWkhe0mvXIlphVpQR4pAMHN2-mQGEU6jFhGweCv_7vSgNqSpqDzaC8MkN9Tt9485zA
+        `
       }
     });
     return response.data.artists.items;
@@ -110,7 +111,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     return response.data;
   } catch (error) {
     if (tokenExpired(error)) {
-      token = getToken();
+      token = await getToken();
       return getTopSongs(artistID, moreOptionsAvailable);
     }
     console.error(error);
@@ -162,7 +163,7 @@ async function displayMore(query) {
     return response.data;
   } catch (error) {
     if (tokenExpired(error)) {
-      token = getToken();
+      token = await getToken();
       return displayMore(query);
     }
     console.error(error);
@@ -180,7 +181,7 @@ async function getArtistByID(artistID) {
     return response.data
   } catch (error) {
     if (tokenExpired(error)) {
-      token = getToken();
+      token = await getToken();
       return getArtistByID(artistID);
     }
     console.error(error);
