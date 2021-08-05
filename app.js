@@ -46,20 +46,20 @@ async function getArtistID(token, query) {
 
 async function getTopSongs(token, artistID, moreOptionsAvailable) {
   try {
-    deleteChildren(tracksDiv);
-    deleteChildren(resultsUl);
-    spotifyLogo.classList.remove("show");
     const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?&market=US`;
     const response = await axios.get(url, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
+    const tracks = response.data.tracks;
+    deleteChildren(tracksDiv);
+    deleteChildren(resultsUl);
+    spotifyLogo.classList.remove("show");
     //check for whether show more button should show
     if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
       showMore.classList.toggle("show");
     }
-    const tracks = response.data.tracks;
     //if artist has no top tracks
     if (tracks.length === 0) {
       const artist = await getArtistByID(token, artistID);
@@ -128,7 +128,6 @@ async function displayMore(query) {
     liA.addEventListener("click", async e => {
       e.preventDefault();
       const newToken = await getToken();
-      
       getTopSongs(newToken, e.target.dataset.value, true);
     })
     let avatar = null;
