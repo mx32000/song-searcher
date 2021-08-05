@@ -33,7 +33,7 @@ artistForm.addEventListener("submit", async e => {
     return;
   }
   showMore.setAttribute("data-value", query);
-  const topSongs = await getTopSongs(token, artistResults[0].id, artistResults.length > 1);
+  const topSongs = await getTopSongs(artistResults[0].id, artistResults.length > 1);
 })
 
 async function getArtistID(query) {
@@ -77,7 +77,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     }
     //if artist has no top tracks
     if (tracks.length === 0) {
-      const artist = await getArtistByID(token, artistID);
+      const artist = await getArtistByID(artistID);
       alert(`NO TOP TRACKS FOUND FOR ARTIST: ${artist.name}`);
       return response.data;
     }
