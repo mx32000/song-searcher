@@ -38,6 +38,7 @@ artistForm.addEventListener("submit", async e => {
 
 async function getArtistID(query) {
   try {
+    console.log("query:", query);
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
     const response = await axios.get(url, {
       headers: {
