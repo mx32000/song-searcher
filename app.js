@@ -18,6 +18,7 @@ async function getToken() {
 }
 
 function tokenExpired(error) {
+  console.log("in token expired");
   return error.response.data.error.message === "The access token expired";
 }
 
