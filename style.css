@@ -150,21 +150,24 @@ footer {
   padding: 2px;
 }
 
+@media only screen and  (min-width: 385px) and (max-width: 767px) {
+  header h1 {
+    font-size: 40px;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   main .track-list {
     grid-template-columns: 1fr 1fr;
   }
-  header {
-    font-size: 36px;
+  header h1 {
+    font-size: 72px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   main .track-list {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-  header {
-    font-size: 40px;
   }
   footer {
     font-size: 12px;
