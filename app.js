@@ -145,6 +145,7 @@ async function displayMore(query) {
       }
     });
     spotifyLogo.classList.add("show");
+    deleteChildren(resultsUl);
     response.data.artists.items.forEach(artist => {
       const artistLi = document.createElement("li");
       const liA = document.createElement("a");
