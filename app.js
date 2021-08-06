@@ -8,6 +8,10 @@ const errorDisplay = document.querySelector(".error");
 const spotifyLogo = document.querySelector("#spotify-logo");
 const hideResults = document.querySelector("#hide");
 
+//////////////////////////////////////
+// Token Handling
+//////////////////////////////////////
+
 let token = null;
 
 async function setToken() {
@@ -29,10 +33,14 @@ function tokenExpired(error) {
   return error.response.data.error.message === "The access token expired";
 }
 
+//////////////////////////////////////
+// Event Listeners
+//////////////////////////////////////
+
 artistForm.addEventListener("submit", async e => {
   e.preventDefault();
   const query = encodeURIComponent(artistInput.value);
-  const artistResults = await getArtistID(query);
+  const artistResults = await getArtists(query);
   if (artistResults.length === 0) {
     alert(`NO ARTISTS FOUND FOR QUERY: ${artistInput.value}`);
     return;
@@ -51,7 +59,11 @@ hideResults.addEventListener("click", e => {
   showMore.classList.add("show");
 })
 
-async function getArtistID(query) {
+//////////////////////////////////////
+// Making Calls
+//////////////////////////////////////
+
+async function getArtists(query) {
   try {
     const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
     const response = await axios.get(url, {
@@ -63,7 +75,7 @@ async function getArtistID(query) {
   } catch (error) {
     if (tokenExpired(error)) {
       setToken();
-      return getArtistID(query);
+      return getArtists(query);
     }
     console.error(error);
   }

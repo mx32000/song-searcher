@@ -114,7 +114,7 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 |August 2| Project Approval / Core Application Structure (HTML, CSS, etc.) / Figure out how to hide client credentials | Complete (August 4)
 |August 3| JS / dynamic content | Complete
 |August 4| Responsiveness / MVP | Complete
-|August 5| Finishing touches / Post MVP | Incomplete
+|August 5| Finishing touches / Post MVP | Complete
 |August 6| Presentations | Incomplete
 
 ## Priority Matrix
@@ -127,42 +127,75 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Make successful call to API with Postman | H | 3hrs| 2hrs | 0hrs |
-| Make successful call to API in VSCode | H | 3hrs| 4hrs | 0hrs |
-| Hide credentials from Github | H | 5hrs| 5hrs | 0hrs |
-| Text and search bar/submit | H | 3hrs| 1hrs | 0hrs |
-| Make search call and get artist | H | 2hrs| 2.5hrs | 0hrs |
-| Make call for top songs and format data | H | 2hrs| 2hrs | 0hrs |
-| Render data on page using Flexbox / Grid | H | 3hrs| 2hrs | 0hrs |
-| Adjust for medium screens | L | 3hrs| 1hrs | 0hrs |
-| Adjust for larger screens | M | 3hrs| 1.5hrs | 0hrs |
-| Deploy site | H | 2hrs| 1hr | 0hrs |
-| Total | H | 29hrs| 6hrs | 0hrs |
+| Make successful call to API with Postman | H | 3hrs| 2hrs | 2hrs |
+| Make successful call to API in VSCode | H | 3hrs| 4hrs | 4hrs |
+| Hide credentials from Github | H | 5hrs| 5hrs | 5hrs |
+| Text and search bar/submit | H | 3hrs| 1hr | 1hr |
+| Make search call and get artist | H | 2hrs| 2.5hrs | 2.5hrs |
+| Make call for top songs and format data | H | 2hrs| 2hrs | 2hrs |
+| Render data on page using Flexbox / Grid | H | 3hrs| 2hrs | 2hrs |
+| Adjust for medium screens | L | 3hrs| 1hr | 1hr |
+| Adjust for larger screens | M | 3hrs| 1.5hrs | 1.5hrs |
+| Deploy site | H | 2hrs| 1hr | 1hr |
+| Total | H | 29hrs| 22hrs | 22hrs |
 
 
 ### Post MVP
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Selection menu to choose how many songs to display | M | 1hr| .5hrs | 0hrs |
-| "To Top" button on mobile screen | M | 1hr| 1hr | 0hrs |
+| Selection menu to choose how many songs to display | M | 1hr| .5hrs | .5hrs |
+| "To Top" button on mobile screen | M | 1hr| 1hr | 1hr |
 | Create tabs for multiple functions | L | 3hrs| 0hrs | 0hrs |
 | Implement search for random song from artist | L | 3hrs| 0hrs | 0hrs |
-| Handle token expired error | L | 2hrs| 2hrs | 0hrs |
-| Handle no search results error | H | 2hrs| 1.5hrs | 0hrs |
-| Option to see more artists that fit search | L | 3hrs| 4hrs | 0hrs |
-| Follow Spotify design guidelines | M | 3hrs| 1hrs | 0hrs |
-| Total | H | 18hrs| 0hrs | 0hrs |
+| Handle token expired error | L | 2hrs| 2hrs | 2hrs |
+| Handle no search results error | H | 2hrs| 1.5hrs | 1.5hrs |
+| Option to see more artists that fit search | L | 3hrs| 4hrs | 4hrs |
+| Follow Spotify design guidelines | M | 3hrs| 1hr | 1hr |
+| Total | H | 18hrs| 10hrs | 10hrs |
 
 ## Code Snippet
 
-Use this section to include a brief code snippet of functionality that you are proud of and a brief description.  
+Inside getTopSongs(artistID, moreOptionsAvailable): Checks for buttons, handling no top tracks, showing the logo if there are tracks, limiting the number of tracks, and creating the components.
 
-```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+``` javascript
+  //check for whether show more button should show
+  if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
+    showMore.classList.toggle("show");
+  }
+  //check for whether to top button should show
+  if ((tracks.length > 1) ^ (toTop.classList.contains("show"))) {
+    toTop.classList.toggle("show");
+  }
+  //if artist has no top tracks
+  if (tracks.length === 0) {
+    const artist = await getArtistByID(artistID);
+    alert(`NO TOP TRACKS FOUND FOR ARTIST: ${artist.name}`);
+    return response.data;
+  }
+  spotifyLogo.classList.add("show");
+  //grab how many songs from select input
+  const limit = document.querySelector("#song-number").value;
+  tracks.slice(0,limit).forEach(track => {
+    const trackDiv = document.createElement("div");
+    //name
+    const nameEl = document.createElement("h2");
+    nameEl.textContent = track.name;
+    //image
+    const imgEl = document.createElement("img");
+    imgEl.setAttribute("src", track.album.images[1].url);
+    //artists
+    const artistsEl = document.createElement("p");
+    const artists = track.artists.map(artist => artist.name);
+    artistsEl.textContent = artists.join(", ");
+    //album
+    const albumEl = document.createElement("p");
+    albumEl.textContent = `Album: ${track.album.name}`;
+
+    trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
+    tracksDiv.append(trackDiv);
+  })
 ```
 
 ## Change Log
-Decided against using the same token until it needed refreshing, instead, gets a new token for each group of requests - nowhere close to rate limi so this is okay
+Decided not to add tabs because I liked the simplicity as is

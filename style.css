@@ -80,7 +80,6 @@ main #spotify-logo {
   box-sizing: content-box;
   height: 70px;
   padding: 35px;
-  display: hidden;
 }
 
 main #more-results {
