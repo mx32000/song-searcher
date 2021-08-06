@@ -159,42 +159,42 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 Inside getTopSongs(artistID, moreOptionsAvailable): Checks for buttons, handling no top tracks, showing the logo if there are tracks, limiting the number of tracks, and creating the components.
 
 ``` javascript
-  //check for whether show more button should show
-  if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
-    showMore.classList.toggle("show");
-  }
-  //check for whether to top button should show
-  if ((tracks.length > 1) ^ (toTop.classList.contains("show"))) {
-    toTop.classList.toggle("show");
-  }
-  //if artist has no top tracks
-  if (tracks.length === 0) {
-    const artist = await getArtistByID(artistID);
-    alert(`NO TOP TRACKS FOUND FOR ARTIST: ${artist.name}`);
-    return response.data;
-  }
-  spotifyLogo.classList.add("show");
-  //grab how many songs from select input
-  const limit = document.querySelector("#song-number").value;
-  tracks.slice(0,limit).forEach(track => {
-    const trackDiv = document.createElement("div");
-    //name
-    const nameEl = document.createElement("h2");
-    nameEl.textContent = track.name;
-    //image
-    const imgEl = document.createElement("img");
-    imgEl.setAttribute("src", track.album.images[1].url);
-    //artists
-    const artistsEl = document.createElement("p");
-    const artists = track.artists.map(artist => artist.name);
-    artistsEl.textContent = artists.join(", ");
-    //album
-    const albumEl = document.createElement("p");
-    albumEl.textContent = `Album: ${track.album.name}`;
+    //check for whether show more button should show
+    if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
+      showMore.classList.toggle("show");
+    }
+    //if artist has no top tracks
+    if (tracks.length === 0) {
+      const artist = await getArtistByID(artistID);
+      alert(`NO TOP TRACKS FOUND FOR ARTIST: ${artist.name}`);
+      return response.data;
+    }
+    spotifyLogo.classList.add("show");
+    //grab how many songs from select input
+    const limit = document.querySelector("#song-number").value;
+    tracks.slice(0,limit).forEach(track => {
+      const trackDiv = document.createElement("div");
+      //name
+      const nameEl = document.createElement("h2");
+      nameEl.textContent = track.name;
+      //image
+      const imgEl = document.createElement("img");
+      imgEl.setAttribute("src", track.album.images[1].url);
+      //artists
+      const artistsEl = document.createElement("p");
+      const artists = track.artists.map(artist => artist.name);
+      artistsEl.textContent = artists.join(", ");
+      //album
+      const albumEl = document.createElement("p");
+      albumEl.textContent = `Album: ${track.album.name}`;
 
-    trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
-    tracksDiv.append(trackDiv);
-  })
+      trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
+      tracksDiv.append(trackDiv);
+    })
+    //check for whether to top button should show
+    if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
+      toTop.classList.toggle("show");
+    }
 ```
 
 ## Change Log

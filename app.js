@@ -98,10 +98,6 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
       showMore.classList.toggle("show");
     }
-    //check for whether to top button should show
-    if ((tracks.length > 1) ^ (toTop.classList.contains("show"))) {
-      toTop.classList.toggle("show");
-    }
     //if artist has no top tracks
     if (tracks.length === 0) {
       const artist = await getArtistByID(artistID);
@@ -130,7 +126,10 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
       trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
       tracksDiv.append(trackDiv);
     })
-
+    //check for whether to top button should show
+    if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
+      toTop.classList.toggle("show");
+    }
     return response.data;
   } catch (error) {
     if (tokenExpired(error)) {
