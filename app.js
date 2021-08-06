@@ -143,7 +143,7 @@ async function displayMore(query) {
     response.data.artists.items.forEach(artist => {
       const artistLi = document.createElement("li");
       const liA = document.createElement("a");
-      liA.href = "#header";
+      liA.href = "#";
       liA.textContent = artist.name;
       liA.setAttribute("data-value", artist.id);
       liA.addEventListener("click", async e => {
