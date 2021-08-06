@@ -191,10 +191,6 @@ Inside getTopSongs(artistID, moreOptionsAvailable): Checks for buttons, handling
       trackDiv.append(nameEl, artistsEl, albumEl, imgEl);
       tracksDiv.append(trackDiv);
     })
-    //check for whether to top button should show
-    if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
-      toTop.classList.toggle("show");
-    }
 ```
 
 ## Change Log

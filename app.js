@@ -94,6 +94,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
     deleteChildren(resultsUl);
     spotifyLogo.classList.remove("show");
     hideResults.classList.remove("show");
+    toTop.classList.remove("show");
     //check for whether show more button should show
     if (moreOptionsAvailable ^ (showMore.classList.contains("show"))) {
       showMore.classList.toggle("show");
@@ -127,7 +128,7 @@ async function getTopSongs(artistID, moreOptionsAvailable) {
       tracksDiv.append(trackDiv);
     })
     //check for whether to top button should show
-    if ((tracksDiv.children.length > 1) ^ (toTop.classList.contains("show"))) {
+    if (tracksDiv.children.length > 1) {
       toTop.classList.toggle("show");
     }
     return response.data;
