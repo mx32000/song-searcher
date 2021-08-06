@@ -156,7 +156,7 @@ Uses the Spotify API to display top songs and song info for a searched artist.
 
 ## Code Snippet
 
-Inside getTopSongs(artistID, moreOptionsAvailable): Checks for buttons, handling no top tracks, showing the logo if there are tracks, limiting the number of tracks, and creating the components.
+Inside getTopSongs(artistID, moreOptionsAvailable): Check for button, handling no top tracks, showing the logo if there are tracks, limiting the number of tracks, and creating the components.
 
 ``` javascript
     //check for whether show more button should show
